@@ -1,5 +1,5 @@
 <?php
-    class Arche extends Combattant{
+    class Archer extends Combattant{
         public function __construct(){
             $this->pv=100;
             $this->atkr=8;

@@ -1,6 +1,6 @@
 <?php    
     require("./classes/combattant.class.php");  
-    require("./classes/spécialisation/arché.class.php");
+    require("./classes/spécialisation/archer.class.php");
     require("./classes/spécialisation/épéiste.class.php");
 ?>
 <!DOCTYPE html>
@@ -13,22 +13,30 @@
 </head>
 <body>
     <h1>Simulation de combats</h1>
+    <h2>Combat: un coup chacun</h2>
     <?php
-        $arche=new Arche;
-        $epeiste=new Epeiste;
+        $archer = new Archer;
+        $epeiste = new Epeiste;
 
-        while ($arche -> pv > 0 && $epeiste -> pv > 0){
-            $arche->defendre($epeiste);
-            echo "Arché pv: ".$arche->pv."<br>";
-            $epeiste->defendre($arche);
-            echo "Epeiste pv: ".$epeiste->pv."<br>";
+        while ($archer -> pv > 0 && $epeiste -> pv > 0) {
+            // Attaque archer
+            $archer -> defendre($epeiste);
+            echo "Archer : ".$archer -> pv." pv restant. <br>";
+            // Attaque épeiste
+            $epeiste -> defendre($archer);
+            echo "Epeiste : ".$epeiste -> pv." pv restant. <br><br>";
         }
-        if ($arche->pv<0) {
-            echo "Arché a gagné, il lui reste ".$arche->pv." PV.";
+        // Qui est le gagnant
+        if ($archer -> pv<0) {
+            echo "Archer a gagné, il lui reste ".$archer -> pv." PV.";
         }
         else{
-            echo"Epéiste a gagné, il lui reste ".$epeiste->pv." PV.";
+            echo"Epéiste a gagné, il lui reste ".$epeiste -> pv." PV.";
         }
+    ?>
+    <h2>Combat: trois coups chacun</h2>
+    <?php
+
     ?>
 </body>
 </html>
